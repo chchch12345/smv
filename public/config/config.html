@@ -1,0 +1,194 @@
+<html>
+
+<head>
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script> -->
+    <script type="text/javascript" src="../js/fetch.js"></script>
+    <script type="text/javascript" src="../js/polyfill.min.js"></script>
+    <script type="text/javascript" src="./config.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/main.css" />
+    <link rel="stylesheet" type="text/css" href="../css/my.css" />
+    <link rel="stylesheet" type="text/css" href="../css/loader.css" />
+    <script src='/socket.io/socket.io.js'></script>
+
+    <!-- position: fixed; bottom: 0; left: 43%; -->
+    <div id="ContentPageTitle">
+        <label onclick='return logout()' class="logout">Logout &nbsp;&nbsp;&nbsp;<span>&#10149;</span> </label>
+        <a class="schedule" onclick='return Goshc()'>Schedule &nbsp;&nbsp;&nbsp;<span>&#10170;</span></a>
+        <!-- <img onclick='return logout()' class="logout" src="../icon/exit.png" /> -->
+        <h1 style="text-align: center;">Configuration</h1>
+    </div>
+
+</head>
+
+<body onload="Setdefault()">
+    <div id="loadings" class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <div id="ContentPage">
+        <div class="content">
+            <div style="margin: auto;" class="row">
+                <div class="columnContent">
+                    <label class="configlabel">Server IP</label>
+                </div>
+                <div style="width: 50%;" class="columnContent">
+                    <input style="width:100%" type="text" id='txtserurl' />
+                    <input style="width:100%" type="text" id='txtserurlcustom' />
+                </div>
+                <div style="width: 25%;float:left;padding-left: 2%;">
+                    <button onclick='return serConSave()'>SAVE CONFIG</button>
+                </div>
+            </div>
+            <div class="content">
+                <div style="margin: auto; margin-top: 10px;" class="row">
+                    <div class="columnContent">
+                        <label class="configlabel">Unique Identifier</label>
+                    </div>
+                    <div style="width: 50%;" class="columnContent">
+                        <input style="width:100%" type="text" id='txtiden' />
+                    </div>
+                    <div style="width: 25%; float:left;padding-left: 2%;">
+                        <button onclick='return reset()'>RESET</button>
+                    </div>
+                </div>
+
+                <div style="margin: auto; margin-top: 10px;" class="row">
+                    <div class="columnContent">
+                        <label class="configlabel">Startup URL</label>
+                    </div>
+                    <div style="width:40%; margin-top: 1%;" class="columnContent">
+                        <input style="border-color: white;" type="radio" id="rdbdefault" onclick="handleClick(this);"
+                            name="drone" value="1">
+                        <label style="margin-top: 2%;" for="rdbdefault">Default</label>&nbsp;
+                        <input style="border-color: white;" type="radio" id="rdbcustom" onclick="handleClick(this);"
+                            name="drone" value="0">
+                        <label style="margin-top: 2%;" for="rdbcustom">Custom</label>
+                        <!-- <input style="width:100%"  class="my_input_style" id='txtiden' /> -->
+                    </div>
+                    <div style="width:10%;" class="columnContent">
+                        <label class="configlabel">Protocol</label>
+                    </div>
+                    <div class="columnContent">
+                        <select id="ddlprotocol" style="width: auto;cursor: pointer; margin-left: 8%;">
+                            <option value="nots">http://</option>
+                            <option value="gots">https://</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="margin: auto; margin-top: 10px;" class="row">
+                    <div class="columnContent">
+                        <label class="configlabel">Schedule Type</label>
+                    </div>
+                    <div style="width:40%; margin-top: 1%;" class="columnContent">
+                        <input style="border-color: white;" type="radio" id="rdbserver" name="cake" value="1">
+                        <label style="margin-top: 2%;" for="rdbserver">Server</label>&nbsp;
+                        <input style="border-color: white;" type="radio" id="rdblocal" name="cake" value="0">
+                        <label style="margin-top: 2%;" for="rdblocal">Local</label>
+                        <!-- <input style="width:100%"  class="my_input_style" id='txtiden' /> -->
+                    </div>
+                </div>
+
+                <div style="margin-top: 20px;" class="content">
+                    <label class="configtitle">
+                        NETWORK</label>
+
+                    <div style="font-size: 16px;" class="Logincontent2">
+                        <div style="margin: auto;" class="row">
+                            <div class="column">
+                                <label class="custom">Ethernet :</label>
+
+                            </div>
+                            <div class="column">
+                                <label class="custom" id='lblcontethmac'></label>
+
+                            </div>
+                            <div style="text-align: right" class="column">
+                                <label class="custom" id='lblcontethip'></label>
+
+                            </div>
+                            <div class="column">
+                                <label class="custom" id='lblcontethstatus'></label>
+
+                            </div>
+                        </div>
+
+                        <div style="margin: auto;" class="row">
+                            <div class="column">
+                                <label class="custom">Wifi :</label>
+
+                            </div>
+                            <div class="column">
+                                <label class="custom" id='lblcontwifimac'></label>
+
+                            </div>
+                            <div style="text-align: right" class="column">
+                                <label class="custom" id='lblcontwifiip'></label>
+
+                            </div>
+                            <div class="column">
+                                <label class="custom" id='lblcontwifistatus'></label>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top:30px;">
+                    <label class="configtitle">
+                        OTHERS</label>
+                    <!-- <button onclick='return FooSet()'>Set URL</button> -->
+                    <div style="margin-top:10px;">
+                        <button style="margin-left: 7%;"
+                            onclick='return confirm_off("(Display Off) Are you sure?")'>Display Off</button>
+                        <button style="margin-left: 1%;"
+                            onclick='return confirm_restart("(Restart) Are you sure?")'>Restart</button>
+                    </div>
+                </div>
+
+                <div style="margin-top:30px;">
+                    <label class="configtitle">
+                        PATCH <span style="font-size: 12px;color: red;float: right;font-weight: 600;">
+                            *File must be in exact name and format : SMV_venue_client.zip</span></label>
+                    <!-- <button onclick='return FooSet()'>Set URL</button> -->
+                    <div style="margin-top:10px; margin-left:7%;">
+                        <form method="POST" enctype="multipart/form-data" action="/upload">
+                            <input
+                                style="border: 1px solid #ccc;display: inline-block;padding: 6px 12px;cursor: pointer; border-radius: 10px;"
+                                type="file" name="filename" size="60" />
+                            <input type="submit" style=" margin-left: 10px;height: 40;color: black;" value="Update">
+                        </form>
+                    </div>
+                </div>
+
+                <div style="margin-top:30px;margin-bottom:30px;">
+                    <label class="configtitle">
+                        LOG FILE DOWNLOAD</label>
+                    <!-- <button onclick='return FooSet()'>Set URL</button>
+                         onclick="location.href='http://localhost/admin/download/success_log'"
+                     onclick="location.href='http://localhost/admin/download/error_log'"
+                    -->
+                    <div style="margin-top:10px;">
+                        <button id='btnsslog' style="margin-left: 7%;"
+                           >Success</button>
+                        <button id='btneelog' style="margin-left: 1%;"
+                           >Error</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <input hidden="true" id="hdnDIP" />
+    <input hidden="true" id="hdnCIP" />
+    <input hidden="true" id="hdnisrestart" value="0" />
+
+</body>
+
+</html>

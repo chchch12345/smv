@@ -1,0 +1,53 @@
+
+[2019-8-23 10:48:26] 
+[2019-8-23 10:48:26] TypeError: Cannot read property 'screen_off' of undefined
+[2019-8-23 10:52:9] TypeError: Cannot read property 'screen_off' of undefined
+[2019-8-23 10:52:51] TypeError: Cannot read property 'screen_off' of undefined
+[2019-8-23 10:53:33] TypeError: Cannot read property 'screen_off' of undefined
+[2019-8-23 11:2:56] TypeError: Cannot read property 'screen_on' of undefined
+[2019-8-23 11:3:16] TypeError: Cannot read property 'screen_off' of undefined
+[2019-8-23 11:4:41] TypeError: Cannot read property 'screen_off' of undefined
+[2019-8-23 11:12:24] CheckserverSchedule :TypeError: Cannot read property 'screen_off' of undefined
+[2019-8-23 11:15:7] CheckserverSchedule :TypeError: Cannot read property 'screen_off' of undefined
+[2019-8-23 11:15:43] CheckserverSchedule :TypeError: Cannot read property 'screen_off' of undefined
+[2019-8-23 11:18:29] CheckserverSchedule :TypeError: Cannot read property 'screen_off' of undefined
+[2019-8-23 11:20:31] CheckserverSchedule :TypeError: Cannot read property 'screen_off' of undefined
+[2019-8-23 11:21:53] CheckserverSchedule :TypeError: Cannot read property 'screen_off' of undefined
+[2019-8-23 11:42:25] CheckserverSchedule :TypeError: Cannot read property 'screen_off' of undefined
+[2019-8-23 11:44:22] CheckserverSchedule :TypeError: Cannot read property 'screen_off' of undefined
+[2019-8-23 11:44:55] CheckserverSchedule :TypeError: Cannot read property 'screen_off' of undefined
+[2019-8-23 11:46:14] CheckserverSchedule :TypeError: Cannot read property 'screen_off' of undefined
+[2019-8-23 11:47:11] CheckserverSchedule :TypeError: Cannot read property 'screen_off' of undefined
+[2019-8-23 11:48:39] getServerSchedule :TypeError: Cannot read property 'screen_on' of undefined
+[2019-8-23 11:49:7] CheckserverSchedule :TypeError: Cannot read property 'screen_off' of undefined
+[2019-8-23 12:3:40] getServerSchedule :TypeError: Cannot read property 'screen_on' of undefined
+[2019-8-23 12:5:40] getServerSchedule :TypeError: Cannot read property 'screen_on' of undefined
+[2019-8-26 13:34:27] CheckserverSchedule :TypeError: Cannot read property 'screen_off' of undefined
+[2019-8-26 13:36:49] CheckserverSchedule :TypeError: Cannot read property 'screen_off' of undefined
+[2019-8-26 13:38:49] CheckserverSchedule :TypeError: Cannot read property 'screen_off' of undefined
+[2019-8-26 13:40:58] CheckserverSchedule :TypeError: Cannot read property 'screen_off' of undefined
+[2019-8-26 13:51:9] CheckserverSchedule :TypeError: Cannot read property 'screen_off' of undefined
+[2019-8-26 13:52:46] CheckserverSchedule :TypeError: Cannot read property 'screen_off' of undefined
+[2019-8-26 13:53:39] getServerSchedule :TypeError: Cannot read property 'screen_on' of undefined
+[2019-8-26 13:53:53] CheckserverSchedule :TypeError: Cannot read property 'screen_off' of undefined
+[2019-8-26 13:53:56] getServerSchedule :TypeError: Cannot read property 'screen_on' of undefined
+[2019-8-26 13:55:55] getServerSchedule :TypeError: Cannot read property 'screen_on' of undefined
+[2019-8-26 13:58:58] CheckserverSchedule :TypeError: Cannot read property 'screen_off' of undefined
+[2019-8-26 13:59:36] CheckserverSchedule :TypeError: Cannot read property 'screen_off' of undefined
+[2019-8-26 14:2:42] getServerSchedule :TypeError: Cannot read property 'screen_on' of undefined
+[2019-8-26 14:2:47] CheckserverSchedule :TypeError: Cannot read property 'screen_off' of undefined
+[2019-8-26 14:4:46] CheckserverSchedule :TypeError: Cannot read property 'screen_off' of undefined
+[2019-8-26 14:6:6] CheckserverSchedule :TypeError: Cannot read property 'screen_off' of undefined
+[2019-8-26 15:29:5] CheckserverSchedule :TypeError: Cannot read property 'screen_off' of undefined
+[2019-8-26 15:29:46] CheckserverSchedule :TypeError: Cannot read property 'screen_off' of undefined
+[2019-8-26 15:30:34] CheckserverSchedule :TypeError: Cannot read property 'screen_off' of undefined
+[2019-8-26 15:31:48] CheckserverSchedule :TypeError: Cannot read property 'screen_off' of undefined
+[2019-8-26 15:32:59] CheckserverSchedule :TypeError: Cannot read property 'screen_off' of undefined
+[2019-8-26 15:36:59] CheckserverSchedule :TypeError: Cannot read property 'screen_off' of undefined
+[2019-8-26 15:38:11] CheckserverSchedule :TypeError: Cannot read property 'screen_off' of undefined
+[2019-8-26 15:38:56] CheckserverSchedule :TypeError: Cannot read property 'screen_off' of undefined
+[2019-8-26 15:39:35] CheckserverSchedule :TypeError: Cannot read property 'screen_off' of undefined
+[2019-8-26 15:41:37] CheckserverSchedule :TypeError: Cannot read property 'screen_off' of undefined
+[2019-8-26 15:43:3] CheckserverSchedule :TypeError: Cannot read property 'screen_off' of undefined
+[2019-8-26 15:45:34] CheckserverSchedule :TypeError: Cannot read property 'screen_off' of undefined
+[2019-8-26 15:56:24] CheckserverSchedule :TypeError: Cannot read property 'screen_off' of undefined

@@ -1,0 +1,128 @@
+<html>
+
+<head>
+
+    <link rel="stylesheet" type="text/css" href="./css/main.css" />
+    <link rel="stylesheet" type="text/css" href="./css/my.css" />
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script> -->
+    <script type="text/javascript" src="./js/fetch.js"></script>
+    <script type="text/javascript" src="./js/polyfill.min.js"></script>
+    <script type="text/javascript" src="./login.js"></script>
+    <script src='/socket.io/socket.io.js'></script>
+
+    <div style="text-align: center;" id="LoginPageTitle">
+        <img src="./icon/Logo.png" />
+    </div>
+
+</head>
+
+<body onload="Setdefault()">
+    <div id="LoginPage">
+        <div class="Logincontent">
+            <label
+                style="margin-bottom: 2px; margin-top: 5%;font-family: monospace;font-size: inherit;color: lightslategrey;">User
+                Name</label> <input type="text" class="my_input_style" id='txtid' />
+
+            <label
+                style="margin-top: 10px;margin-bottom: 2px;font-family: monospace;font-size: inherit;color: lightslategrey;">Password</label>
+            <input type="password" class="my_input_style" id='txtpw' />
+
+            <div style="text-align: center; margin-top:3%;">
+                <button id='btnlogin' style="width: 100%;" onclick='return login()'>LOGIN</button>
+            </div>
+        </div>
+        <div id="mydiv" style="font-size: 17px; font-family: monospace;" class="Logincontent2">
+
+            <div style="margin: auto;" class="row">
+                <div class="column">
+                    <label class="custom">Ethernet :</label>
+
+                </div>
+                <div class="column">
+                    <label class="custom" id='lblethmac'></label>
+
+                </div>
+                <div style="text-align: right" class="column">
+                    <label class="custom" id='lblethip'></label>
+
+                </div>
+                <div class="column">
+                    <label class="custom" id='lblethstatus'></label>
+
+                </div>
+            </div>
+
+            <div style="margin: auto; margin-top:-10px;" class="row">
+                <div class="column">
+                    <label class="custom">Wifi :</label>
+
+                </div>
+                <div class="column">
+                    <label class="custom" id='lblwifimac'></label>
+
+                </div>
+                <div style="text-align: right" class="column">
+                    <label class="custom" id='lblwifiip'></label>
+
+                </div>
+                <div class="column">
+                    <label class="custom" id='lblwifistatus'></label>
+
+                </div>
+            </div>
+
+            <div style="margin: auto; margin-top:-10px;" class="row">
+                <div class="column">
+                    <label class="custom">Identifier :</label>
+
+                </div>
+                <div style="float: left; width: 75%; padding: 10px; height: 50px;margin-left: -2%;">
+                    <label id='lblidentity' style="padding-left: 3%;color: black;">
+                    </label>
+
+                </div>
+            </div>
+
+            <div style="margin: auto; margin-top:-10px;" class="row">
+                <div class="column">
+                    <label class="custom">Server IP :</label>
+
+                </div>
+                <div style="float: left; width: 50%; padding: 10px; height: 50px;margin-left: -2%;">
+                    <label id='lblserurl' style="padding-left: 13px;color: black;">
+                    </label>
+
+                </div>
+                <div style="margin-left: 2%;" class="column">
+                    <label id="lblisreacheble" class="custom"></label>
+
+                </div>
+            </div>
+        </div>
+
+        <div style="width:300px; color:black; margin-left: 42%;">
+            <div style="width:50%;float:left;">
+                <div style="font-size: 55;" id="divtime"></div>
+            </div>
+            <div style="width:50%; float:left;margin-top: 5%;">
+                <div style="font-size: 20;" id="divdayname"></div>
+                <div style="width:70px;">
+                    <div style="width:50%; float:left;">
+                        <div style="font-size: 18;" id="divmonth"></div>
+                    </div>
+                    <div style="width:50%; float:left;">
+                        <div style="font-size: 18;" id="divday"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style=" text-align: center; float: right; width: 100%;font-size: smaller; margin-top: 1%;">
+            v1.19026.1
+        </div>
+    </div>
+    <!-- <input hidden="true" id="hdnisrestart" value="0" /> -->
+
+</body>
+
+</html>

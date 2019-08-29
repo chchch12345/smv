@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript" src="../js/fetch.js"></script>
+    <script type="text/javascript" src="../js/polyfill.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <script type="text/javascript" src="./schedule.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/main.css" />
+    <link rel="stylesheet" type="text/css" href="../css/my.css" />
+    <script src='/socket.io/socket.io.js'></script>
+
+    <div id="SchedulePageTitle">
+        <label onclick='return logout()' class="logout">Logout &nbsp;&nbsp;&nbsp;<span>&#10149;</span> </label>
+        <a style="right: 55px;" class="schedule" onclick='return backConfig()'> Configuration
+            &nbsp;&nbsp;&nbsp;<span>&#10170;</span> </a>
+        <h1 style="text-align: center;">Schedule</h1>
+    </div>
+
+</head>
+
+<body onload="Setdefault()">
+
+    <div id="SchedulePage">
+        <div class="content">
+
+            <div style="margin-top: 20px;" class="content">
+                <label class="schtitle">
+                    Scheduled Pulled From Server</label>
+
+                <div style="margin-top: 10px; border: 1px solid silver;max-width: 700px;margin: auto;"> </div>
+                <label class="schcontent">
+                    Schedule </label>
+                <div style=" margin-left: 7%;width: fit-content;" id="SPFSlist"></div>
+            </div>
+
+            <div style="margin-top: 20px;" class="content">
+                <label class="schtitle">
+                    Daily Scheduled Sleep /SCREEN OFF</label>
+
+                <div style="margin-top: 10px; border: 1px solid silver;max-width: 700px;margin: auto;"> </div>
+
+                <div style="margin-left:5%;">
+                    <div style="width: 20%;padding-top: 15px;" class="column">
+                        <input class="cssdsrtime" type="time" id="dsrtxttime">
+                    </div>
+                    <div style="width: 10%; float:left;margin-top:2%;text-align: center;">
+                        <button id="dsrbtn7" onclick="colorchange('dsrbtn7')">Su</button>
+                    </div>
+                    <div style="width: 10%; float:left;margin-top:2%;text-align: center;">
+                        <button id="dsrbtn1" onclick="colorchange('dsrbtn1')">Mo</button>
+                    </div>
+                    <div style="width: 10%; float:left;margin-top:2%;text-align: center;">
+                        <button id="dsrbtn2" onclick="colorchange('dsrbtn2')">Tu</button>
+                    </div>
+                    <div style="width: 10%; float:left;margin-top:2%;text-align: center;">
+                        <button id="dsrbtn3" onclick="colorchange('dsrbtn3')">We</button>
+                    </div>
+
+                    <div style="width: 10%; float:left;margin-top:2%;text-align: center;">
+                        <button id="dsrbtn4" onclick="colorchange('dsrbtn4')">Th</button>
+                    </div>
+                    <div style="width: 10%; float:left;margin-top:2%;text-align: center;">
+                        <button id="dsrbtn5" onclick="colorchange('dsrbtn5')">Fr</button>
+                    </div>
+                    <div style="width: 10%; float:left;margin-top:2%;text-align: center;">
+                        <button id="dsrbtn6" onclick="colorchange('dsrbtn6')">Sa</button>
+                    </div>
+                    <div style="width: 10%; float:left;margin-top:2%;text-align: center;">
+                        <button onclick='return Adddsr()'><i class="fa fa-plus"></i>&nbsp;Add</button>
+                    </div>
+                </div>
+
+                <label style="padding-top: 8.5%;" class="schcontent">
+                    Schedule </label>
+
+                <div style=" margin-left: 7%;width: fit-content;" id="DSRlist"></div>
+            </div>
+
+            <div style="margin-top: 10%;" class="content">
+                <label class="schtitle">
+                    Daily Scheduled Reboot /SCREEN ON</label>
+
+                <div style="margin-top: 10px; border: 1px solid silver;max-width: 700px;margin: auto;"> </div>
+                <div style="margin-left:5%;">
+                    <div style="width: 20%;padding-top: 15px;" class="column">
+                        <input class="cssdsrtime" type="time" id="dsstxttime">
+                    </div>
+                    <div style="width: 10%; float:left;margin-top:2%;text-align: center;text-align: center;">
+                        <button id="dssbtn7" onclick="colorchange2('dssbtn7')">Su</button>
+                    </div>
+                    <div style="width: 10%; float:left;margin-top:2%;text-align: center;text-align: center;">
+                        <button id="dssbtn1" onclick="colorchange2('dssbtn1')">Mo</button>
+                    </div>
+                    <div style="width: 10%; float:left;margin-top:2%;text-align: center;text-align: center;">
+                        <button id="dssbtn2" onclick="colorchange2('dssbtn2')">Tu</button>
+                    </div>
+                    <div style="width: 10%; float:left;margin-top:2%;text-align: center;text-align: center;">
+                        <button id="dssbtn3" onclick="colorchange2('dssbtn3')">We</button>
+                    </div>
+
+                    <div style="width: 10%; float:left;margin-top:2%;text-align: center;text-align: center;">
+                        <button id="dssbtn4" onclick="colorchange2('dssbtn4')">Th</button>
+                    </div>
+                    <div style="width: 10%; float:left;margin-top:2%;text-align: center;text-align: center;">
+                        <button id="dssbtn5" onclick="colorchange2('dssbtn5')">Fr</button>
+                    </div>
+                    <div style="width: 10%; float:left;margin-top:2%;text-align: center;text-align: center;">
+                        <button id="dssbtn6" onclick="colorchange2('dssbtn6')">Sa</button>
+                    </div>
+                    <div style="width: 10%; float:left;margin-top:2%;text-align: center;text-align: center;">
+                        <button onclick='return Adddss()'><i class="fa fa-plus"></i>&nbsp;Add</button>
+                    </div>
+                </div>
+
+                <label style="padding-top: 8.5%;" class="schcontent">
+                    Schedule </label>
+
+                <div style=" margin-left: 7%;width: fit-content;" id="DSSlist"></div>
+            </div>
+
+            <div style="margin-top: 10%;" class="content">
+                <label class="schtitle">
+                    Custom Scheduled Sleep /SCREEN OFF</label>
+
+                <div style="margin-top: 10px; border: 1px solid silver;max-width: 700px;margin: auto;"> </div>
+                <div style="margin-top: 2%; margin-left: 7%;">
+                    <div style="width: 41%;float: left;">
+                        <input type="datetime-local" id="csrtxttime" class="cssdsrtime" style="width:300px;">
+                    </div>
+
+
+                    <div>
+                        <button onclick='return Addcsr()'><i class="fa fa-plus"></i>&nbsp;Add</button>
+                    </div>
+
+                </div>
+
+
+                <label class="schcontent">
+                    Schedule </label>
+
+                <div style=" margin-left: 7%;width: fit-content;" id="CSRlist"></div>
+
+
+
+
+            </div>
+
+            <div style="margin-top: 10%;" class="content">
+                <label class="schtitle">
+                    Custom Scheduled Reboot /SCREEN ON</label>
+
+                <div style="margin-top: 10px; border: 1px solid silver;max-width: 700px;margin: auto;"> </div>
+                <div style="margin-top: 2%; margin-left: 7%;">
+                    <div style="width: 41%;float: left;">
+                        <input type="datetime-local" id="csstxttime" class="cssdsrtime" style="width:300px;">
+                    </div>
+
+
+                    <div>
+                        <button onclick='return Addcss()'><i class="fa fa-plus"></i>&nbsp;Add</button>
+                    </div>
+
+                </div>
+
+
+                <label class="schcontent">
+                    Schedule </label>
+
+                <div style=" margin-left: 7%;width: fit-content;" id="CSSlist"></div>
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+    </div>
+
+</body>
+
+</html>
