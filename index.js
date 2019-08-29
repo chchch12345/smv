@@ -1,6 +1,8 @@
 var express = require('express');
 var app = express();
+var app2 = express();
 var http = require('http');
+var http2 = require('http').createServer(app2);
 var url = require('url');
 var fs = require('fs');
 const socketIo = require("socket.io");
@@ -702,4 +704,65 @@ server.listen(80, function () {
     serverDellastYearSccLog();
     CheckserverSchedule();
     //openlink();
+});
+
+var last_update = new Date();
+
+app2.all('/heartbeat', function (req, res) {
+        last_update = new Date();
+	console.log("Last update", last_update);
+	
+	if(mac) {
+		const options = {
+			hostname: '119.73.206.46',
+			port: 7890,
+			path: '/InterfaceAPI/STB/Heartbeat?mac_address=' + mac,
+			method: 'GET'
+		}
+		const req = http.request(options, (res) => {
+
+			req.on('error', (error) => {
+				console.error(error)
+			})
+
+			res.on('data', (d) => {
+				try {
+					console.log(JSON.parse(d));
+					response.end();
+				} catch (e) {
+					// console.log(e)
+				}
+			})
+		})
+		
+		req.end();
+	}
+	
+	res.json({"result": "ok"});
+});
+
+setInterval(function () {
+	var now = new Date();
+	var diffMs = now - last_update;
+	var diffMins = ((diffMs % 86400000) % 3600000) / 60000; // minutes
+	
+	//console.log("mins", diffMins);
+
+	// var chrome = null;
+	// try {
+		// chrome = execSync('pgrep chrome').toString();
+  	// } catch(ex) {}
+
+	if(diffMins > 5) {
+		// if(execSync("cat /var/www/config/auto_reboot").toString().trim() == "true" 
+			// && chrome) 
+			
+			
+		//child_process.exec('shutdown -r');
+	}
+}, 60000);
+
+
+http2.listen(30000, function () {
+    console.log('Express server listening on port 30000');
 });
