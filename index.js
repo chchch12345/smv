@@ -701,7 +701,7 @@ function serverDellastYearSccLog() {
 
 }
 
-server.listen(10080, function () {
+server.listen(80, function () {
     scclog('server.listen :Server has started successfully')
     servercheck();
     server_start_cron();
