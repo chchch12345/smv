@@ -155,6 +155,8 @@ app.post('/upload', function (req, res) {
     }
 });
 
+var child_process = require('child_process');
+
 app.post('/overritePatchfile', function (req, res) {
     var child_process = require('child_process');
 
@@ -639,11 +641,9 @@ function CheckserverSchedule() {
             path: '/Management/Device/Fetch?mac_address=' + mac,
             method: 'GET'
         }
-        const req = http.request(options, (res) => {
+        const req = http.get(options, (res) => {
 
-            req.on('error', (error) => {
-                console.error(error)
-            })
+            
 
             res.on('data', (d) => {
                 try {
@@ -661,6 +661,10 @@ function CheckserverSchedule() {
                     // console.log(e)
                 }
             })
+        })
+		
+		req.on('error', (error) => {
+                console.error(error)
         })
 
         req.end()
@@ -697,7 +701,7 @@ function serverDellastYearSccLog() {
 
 }
 
-server.listen(80, function () {
+server.listen(10080, function () {
     scclog('server.listen :Server has started successfully')
     servercheck();
     server_start_cron();
@@ -709,8 +713,7 @@ server.listen(80, function () {
 var last_update = new Date();
 
 app2.all('/heartbeat', function (req, res) {
-        last_update = new Date();
-	console.log("Last update", last_update);
+        
 	
 	if(mac) {
 		const options = {
@@ -719,21 +722,28 @@ app2.all('/heartbeat', function (req, res) {
 			path: '/InterfaceAPI/STB/Heartbeat?mac_address=' + mac,
 			method: 'GET'
 		}
-		const req = http.request(options, (res) => {
+		
+		const req = http.get(options, (res) => {
 
-			req.on('error', (error) => {
-				console.error(error)
-			})
+			
 
 			res.on('data', (d) => {
 				try {
 					console.log(JSON.parse(d));
+					
+					last_update = new Date();
+					console.log("Last update", last_update);
+					
 					response.end();
 				} catch (e) {
 					// console.log(e)
 				}
 			})
 		})
+		
+		req.on('error', (error) => {
+				//console.error(error)
+			})
 		
 		req.end();
 	}
