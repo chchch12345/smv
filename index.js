@@ -756,6 +756,11 @@ setInterval(function () {
 	var diffMs = now - last_update;
 	var diffMins = ((diffMs % 86400000) % 3600000) / 60000; // minutes
 	
+	var data = fs.readFileSync('config.xml');
+	
+	try {
+		data = JSON.parse(data);
+	} catch (e) {}
 	//console.log("mins", diffMins);
 
 	// var chrome = null;
@@ -763,12 +768,12 @@ setInterval(function () {
 		// chrome = execSync('pgrep chrome').toString();
   	// } catch(ex) {}
 
-	if(diffMins > 5) {
+	if(data && data.isSerdefault && diffMins > 5) {
 		// if(execSync("cat /var/www/config/auto_reboot").toString().trim() == "true" 
 			// && chrome) 
 			
 			
-		//child_process.exec('shutdown -r');
+		child_process.exec('shutdown -r');
 	}
 }, 60000);
 
