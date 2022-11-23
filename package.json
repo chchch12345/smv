@@ -34,7 +34,7 @@
     "open": "^6.4.0",
     "sendkeys-js": "0.0.4",
     "serverless-dynamodb-local": "^0.2.30",
-    "socket.io": "^2.2.0"
+    "socket.io": "^2.5.0"
   },
   "devDependencies": {
     "node-key-sender": "^1.0.11"
